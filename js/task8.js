@@ -1,6 +1,3 @@
-let amount;
-let boxesListRef = [];
-
 const inputRef = document.querySelector('#controls > input');
 const renderBtnRef = document.querySelector('button[data-action="render"]');
 const destroyBtnRef = document.querySelector('button[data-action="destroy"]');
@@ -12,12 +9,14 @@ function renderElement() {
   return boxRef;
 }
 
-function destroyElement() {
-  const box = document.querySelector('.box');
-  box.remove();
-}
+// function destroyElement(box) {
+//   box.remove();
+// }
 
 const createBoxes = amount => {
+  destroyBoxes();
+  let boxesListRef = [];
+
   for (let i = 0; i < amount; i++) {
     let element = renderElement();
     let minSize = 30;
@@ -34,16 +33,15 @@ const createBoxes = amount => {
     boxesListRef.push(element);
   }
   htmlBoxesLink.append(...boxesListRef);
+  inputRef.value = '';
 };
 
-const destroyBoxes = amount => {
-  for (let i = 0; i < amount; i++) {
-    destroyElement();
-  }
-  boxesListRef = [];
+const destroyBoxes = () => {
+  // const boxes = document.querySelectorAll('.box');
+  // boxes.forEach(box => destroyElement(box));
+  console.log(htmlBoxesLink);
+  htmlBoxesLink.innerHTML = '';
 };
 
 renderBtnRef.addEventListener('click', () => createBoxes(inputRef.value));
-destroyBtnRef.addEventListener('click', () =>
-  destroyBoxes(htmlBoxesLink.childElementCount),
-);
+destroyBtnRef.addEventListener('click', () => destroyBoxes());
