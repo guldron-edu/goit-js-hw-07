@@ -19,13 +19,19 @@ const images = [
 const createElement = element => {
   const liRef = document.createElement('li');
   liRef.classList.add('element');
-
-  const imgRef = document.createElement('img');
-  imgRef.classList.add('element__img');
-  imgRef.src = element.url;
-  imgRef.alt = element.alt;
-
-  liRef.appendChild(imgRef);
+  //******************************************************//
+  // const imgRef = document.createElement('img');
+  // imgRef.classList.add('element__img');
+  // imgRef.src = element.url;
+  // imgRef.alt = element.alt;
+  // liRef.appendChild(imgRef);
+  //******************************************************//
+  // liRef.insertAdjacentElement('beforeend', imgRef);
+  //******************************************************//
+  liRef.insertAdjacentHTML(
+    'beforeend',
+    `<img class = "element__img" src = "${element.url}" alt = "${element.alt}">`,
+  );
 
   return liRef;
 };
