@@ -39,7 +39,6 @@ const createBoxes = amount => {
 const destroyBoxes = () => {
   // const boxes = document.querySelectorAll('.box');
   // boxes.forEach(box => destroyElement(box));
-  console.log(htmlBoxesLink);
   htmlBoxesLink.innerHTML = '';
 };
 
